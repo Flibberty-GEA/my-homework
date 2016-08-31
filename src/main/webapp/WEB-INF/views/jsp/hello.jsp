@@ -5,6 +5,6 @@
 </head>
 <body>
 <h3>Запрошуємо Вас до стрічки новин</h3>
-<a href="/books/recommendations">Список свіжих публікацій</a>
+<a href="/items/recommendations">Список свіжих публікацій</a>
 </body>
 </html>

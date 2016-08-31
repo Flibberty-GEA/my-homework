@@ -1,4 +1,4 @@
-package ua.skillsup.javacourse.homework.domain.book;
+package ua.skillsup.javacourse.homework.domain.item;
 
 import java.util.Set;
 
@@ -7,6 +7,7 @@ import javax.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import ua.skillsup.javacourse.homework.domain.author.Author;
 import ua.skillsup.javacourse.homework.domain.genre.Genre;
 
 @Data
@@ -23,7 +24,7 @@ public class Item {
   @Column(nullable = false)
   private String title;
 
-  @Column(name = "abstract")
+  @Column(name = "summary")
   private String summary;
 
 /*  @Column

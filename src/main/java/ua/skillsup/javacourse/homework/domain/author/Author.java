@@ -1,4 +1,4 @@
-package ua.skillsup.javacourse.homework.domain.book;
+package ua.skillsup.javacourse.homework.domain.author;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,7 @@ import javax.persistence.Version;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import ua.skillsup.javacourse.homework.domain.item.Item;
 
 @Data
 @EqualsAndHashCode(of = {"name"/*, "birthday"*/})

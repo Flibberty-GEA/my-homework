@@ -8,7 +8,7 @@
 
 <div class="container">
     <ol class="breadcrumb">
-        <li><a href="/books/allBooks">All books</a></li>
+        <li><a href="/items/allItems">All books</a></li>
         <li class="active">View</li>
     </ol>
 
@@ -18,21 +18,21 @@
 
 
     <div class="row">
-        <form:form modelAttribute="book" action="/admin/books/${item.id}">
+        <form:form modelAttribute="item" action="/admin/items/${item.id}">
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-6">
 
-                        <label for="bookTitle">Title</label>
-                        <form:input type="text" path="title" class="form-control" id="bookTitle"
+                        <label for="itemTitle">Title</label>
+                        <form:input type="text" path="title" class="form-control" id="itemTitle"
                                     placeholder="Email" readonly="${param.readonly}"/>
                     </div>
                     <div class="col-md-6">
 
 
-                        <label for="bookTitle">Title</label>
+                        <label for="itemTitle">Title</label>
                         <form:input type="text" path="author.name" class="form-control"
-                                    id="bookTitle"
+                                    id="itemTitle"
                                     placeholder="Email" readonly="${param.readonly}"/>
                     </div>
 
@@ -44,8 +44,8 @@
                     <div class="col-md-12">
 
 
-                        <label for="bookTitle">Title</label>
-                        <form:input type="text" path="summary" class="form-control" id="bookTitle"
+                        <label for="itemTitle">Title</label>
+                        <form:input type="text" path="summary" class="form-control" id="itemTitle"
                                     placeholder="Email" readonly="${param.readonly}"/>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
             <c:choose>
                 <c:when test="${param.readonly}">
                     <sec:authorize access="hasRole('ADMIN')">
-                        <a href="/admin/books/${item.id}" class="btn btn-danger">Edit book</a>
+                        <a href="/admin/items/${item.id}" class="btn btn-danger">Edit book</a>
                     </sec:authorize>
                 </c:when>
                 <c:otherwise>
@@ -79,7 +79,7 @@
             <%--<c:choose>--%>
             <%--<c:when test="${param.readonly}">--%>
             <%--<sec:authorize access="hasRole('ADMIN')">--%>
-            <%--<a href="/admin/books/${book.id}">Edit book</a>--%>
+            <%--<a href="/admin/books/${item.id}">Edit item</a>--%>
             <%--</sec:authorize>--%>
             <%--</c:when>--%>
             <%--<c:when test="${!param.readonly}">--%>

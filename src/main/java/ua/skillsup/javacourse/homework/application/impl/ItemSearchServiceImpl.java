@@ -9,10 +9,10 @@ import javax.inject.Inject;
 
 import ua.skillsup.javacourse.homework.application.EntityNotFoundException;
 import ua.skillsup.javacourse.homework.application.ItemSearchService;
-import ua.skillsup.javacourse.homework.domain.book.Author;
-import ua.skillsup.javacourse.homework.domain.book.AuthorRepo;
-import ua.skillsup.javacourse.homework.domain.book.Item;
-import ua.skillsup.javacourse.homework.domain.book.ItemRepo;
+import ua.skillsup.javacourse.homework.domain.author.Author;
+import ua.skillsup.javacourse.homework.domain.author.AuthorRepo;
+import ua.skillsup.javacourse.homework.domain.item.Item;
+import ua.skillsup.javacourse.homework.domain.item.ItemRepo;
 
 @Service
 @Transactional
@@ -40,9 +40,12 @@ public class ItemSearchServiceImpl implements ItemSearchService {
   }
 
   @Override
-  public List<Author> findAuthor(String name) {
+  public Author findAuthor(String name) {
     return authorRepo.findByName(name);
   }
+
+  @Override
+  public List<Item> findAllItems() {return itemRepo.getAllItems();}
 
   // this method simply delegates the call to repository
   @Override

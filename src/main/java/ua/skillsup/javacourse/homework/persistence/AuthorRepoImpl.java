@@ -4,8 +4,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import ua.skillsup.javacourse.homework.domain.book.Author;
-import ua.skillsup.javacourse.homework.domain.book.AuthorRepo;
+import ua.skillsup.javacourse.homework.domain.author.Author;
+import ua.skillsup.javacourse.homework.domain.author.AuthorRepo;
 
 @Repository
 public class AuthorRepoImpl extends GenericRepo<Author> implements AuthorRepo {
@@ -15,7 +15,7 @@ public class AuthorRepoImpl extends GenericRepo<Author> implements AuthorRepo {
   }
 
   @Override
-  public List<Author> findByName(String name) {
-    return findWhereFieldLike("name", name);
+  public Author findByName(String name) {
+    return findOneByField("name", name).orElse(null);
   }
 }

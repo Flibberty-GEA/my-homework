@@ -14,39 +14,39 @@ import javax.inject.Inject;
 
 import ua.skillsup.javacourse.homework.application.ItemSearchService;
 import ua.skillsup.javacourse.homework.application.EntityNotFoundException;
-import ua.skillsup.javacourse.homework.domain.book.Item;
+import ua.skillsup.javacourse.homework.domain.item.Item;
 
 @Controller
-@RequestMapping("/books")
+@RequestMapping("/items")
 public class ItemSearchController {
 
   @Inject
   private ItemSearchService itemSearchService;
 
-  @RequestMapping(path = "/allBooks", method = RequestMethod.GET)
+  @RequestMapping(path = "/allItems", method = RequestMethod.GET)
   public String getAllBooks(Map<String, Object> model) {
     final List<Item> items = itemSearchService.findItemsForGenre("Fantasy");
 
     model.put("items", items);
 
-    return "all_books";
+    return "all_items";
   }
 
   @RequestMapping(path = "/recommendations", method = RequestMethod.GET)
   public String getRecommendations(Map<String, Object> model) {
-    final List<Item> items = itemSearchService.findItemsForGenre("Fantasy");
+    final List<Item> items = itemSearchService.findAllItems();
 
     model.put("items", items);
 
-    return "books";
+    return "items";
   }
 
   @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-  public ModelAndView getBook(@PathVariable("id") Long id) throws EntityNotFoundException {
+  public ModelAndView getItem(@PathVariable("id") Long id) throws EntityNotFoundException {
     SecurityContextHolder.getContext().getAuthentication();
 
     final Item item = itemSearchService.getItem(id);
 
-    return new ModelAndView("book_view", "book", item);
+    return new ModelAndView("item_view", "item", item);
   }
 }

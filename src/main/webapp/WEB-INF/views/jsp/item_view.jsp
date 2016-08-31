@@ -4,15 +4,14 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-    <title>Edit Book</title>
+    <title>Book</title>
     <jsp:include page="../includes.jsp"/>
 </head>
 <body>
 
-<jsp:include page="book.jsp">
-    <jsp:param name="readonly" value="false"/>
+<jsp:include page="item.jsp">
+    <jsp:param name="readonly" value="true"/>
 </jsp:include>
-
 
 </body>
 </html>

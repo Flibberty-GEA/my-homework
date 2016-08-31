@@ -4,13 +4,14 @@
 
 <nav class="navbar navbar-default">
     <ul class="nav navbar-nav">
-        <li><a class="navbar-brand" href="#">MyFeed</a><img src="<c:url value='/resources/images/lib.png' />" class="logo"></li>
+        <li><a class="navbar-brand" href="#">MyFeed</a>
+            <img src="<c:url value='/resources/images/lib.png' />" class="logo" style="padding-right: 15px"></li>
 
         <li class="${param.activePage == 'RECOMMEND' ? 'active' : ''}">
-            <a href="/books/recommendations">Рекомендовані</a>
+            <a href="/items/recommendations">Рекомендовані</a>
         </li>
         <li class="${param.activePage == 'ALL' ? 'active' : ''}">
-            <a href="/books/allBooks">Всі публікації</a>
+            <a href="/items/allItems">Всі публікації</a>
         </li>
     </ul>
 

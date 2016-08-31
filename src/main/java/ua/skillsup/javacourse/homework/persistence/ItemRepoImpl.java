@@ -3,8 +3,8 @@ package ua.skillsup.javacourse.homework.persistence;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-import ua.skillsup.javacourse.homework.domain.book.Item;
-import ua.skillsup.javacourse.homework.domain.book.ItemRepo;
+import ua.skillsup.javacourse.homework.domain.item.Item;
+import ua.skillsup.javacourse.homework.domain.item.ItemRepo;
 import ua.skillsup.javacourse.homework.domain.genre.Genre;
 import ua.skillsup.javacourse.homework.domain.genre.GenreRepo;
 
@@ -23,6 +23,9 @@ public class ItemRepoImpl extends GenericRepo<Item> implements ItemRepo {
 
   @Inject
   private GenreRepo genreRepo;
+
+  @Override
+  public List<Item> getAllItems(){return getAll();}
 
   @Override
   public List<Item> findItemByTitle (String title) {
@@ -48,5 +51,7 @@ public class ItemRepoImpl extends GenericRepo<Item> implements ItemRepo {
                     .setMaxResults(limit)
                     .list()
     );
+
+
   }
 }

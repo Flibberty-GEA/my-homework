@@ -7,15 +7,16 @@ import org.springframework.security.crypto.password.StandardPasswordEncoder; //
 import org.springframework.stereotype.Component; //
 import org.springframework.transaction.annotation.Transactional; //
 
+import java.time.LocalDate;
 import java.util.stream.Stream;
 
 import javax.inject.Inject; //
 
 import lombok.extern.slf4j.Slf4j; //
-import ua.skillsup.javacourse.homework.domain.book.Author;
-import ua.skillsup.javacourse.homework.domain.book.AuthorRepo; //
-import ua.skillsup.javacourse.homework.domain.book.Item;
-import ua.skillsup.javacourse.homework.domain.book.ItemRepo;
+import ua.skillsup.javacourse.homework.domain.author.Author;
+import ua.skillsup.javacourse.homework.domain.author.AuthorRepo; //
+import ua.skillsup.javacourse.homework.domain.item.Item;
+import ua.skillsup.javacourse.homework.domain.item.ItemRepo;
 import ua.skillsup.javacourse.homework.domain.genre.Genre;
 import ua.skillsup.javacourse.homework.domain.genre.GenreRepo; //
 import ua.skillsup.javacourse.homework.domain.security.User;
@@ -53,7 +54,7 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
 
   private void initDb() {
     initGenres();
-
+      initAuthors();
     initItems();
     initUsers();
 
@@ -66,25 +67,48 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
         .forEach(genreRepo::add);
   }
 
+    private void initAuthors() {
+        final Author author = new Author();
+        author.setName("John");
+        authorRepo.add(author);
+    }
+
   private void initItems() {
-    final Author author = new Author();
-    author.setName("John Ronald Reuel Tolkien");
-
-    authorRepo.add(author);
-
+      final Author author  = authorRepo.findByName("John");
     final Item item1 = new Item();
-    item1.setTitle("The Lord of the Rings");
-    item1.setSummary(
-        "The Lord of the Rings is an epic high-fantasy novel written by English author J. R. R. Tolkien.");
-    item1.setGenres(
+
+      item1.setTitle("Title of item1");
+      item1.setAuthor(author);
+      item1.setSummary("Summary of item1");
+      item1.setGenres(
         Stream.of("Fantasy", "Adventure")
             .map(genreRepo::getGenre)
             .collect(toSet())
-    );
+      );
+      author.addItem(item1);
 
-    author.addItem(item1);
+      final Item item2 = new Item();
+      item2.setTitle("Title of item2");
+      item2.setAuthor(author);
+      item2.setSummary("Summary of item2");
+      item2.setGenres(
+              Stream.of("Fantasy", "Adventure")
+                      .map(genreRepo::getGenre)
+                      .collect(toSet())
+      );
+      author.addItem(item2);
+
+      final Item item3 = new Item();
+      item3.setTitle("Title of item3");
+      item3.setAuthor(author);
+      item3.setSummary("Summary of item3");
+      item3.setGenres(
+              Stream.of("Fantasy", "Adventure")
+                      .map(genreRepo::getGenre)
+                      .collect(toSet())
+      );
+      author.addItem(item3);
   }
-
 
   private void initUsers() {
     final User user = new User();

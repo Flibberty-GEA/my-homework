@@ -11,7 +11,7 @@ import javax.inject.Inject;
 
 import ua.skillsup.javacourse.homework.application.ItemSearchService;
 import ua.skillsup.javacourse.homework.application.EntityNotFoundException;
-import ua.skillsup.javacourse.homework.domain.book.Item;
+import ua.skillsup.javacourse.homework.domain.item.Item;
 
 @Controller
 @RequestMapping(path = "/admin")
@@ -20,17 +20,17 @@ public class AdminController {
   @Inject
   private ItemSearchService itemSearchService;
 
-  @RequestMapping(path = "books/{id}", method = RequestMethod.POST)
+  @RequestMapping(path = "items/{id}", method = RequestMethod.POST)
   public String updateBook(@ModelAttribute Item item) throws EntityNotFoundException {
     itemSearchService.updateItemInfo(item);
 
-    return "redirect:/books/recommendations";
+    return "redirect:/items/recommendations";
   }
 
-  @RequestMapping(path = "books/{id}", method = RequestMethod.GET)
+  @RequestMapping(path = "items/{id}", method = RequestMethod.GET)
   public ModelAndView edit(@PathVariable("id") Long id) throws EntityNotFoundException {
     final Item item = itemSearchService.getItem(id);
 
-    return new ModelAndView("book_edit", "book", item);
+    return new ModelAndView("item_edit", "item", item);
   }
 }

@@ -9,9 +9,9 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 
 import ua.skillsup.javacourse.homework.application.ItemEditService;
-import ua.skillsup.javacourse.homework.domain.book.Author;
-import ua.skillsup.javacourse.homework.domain.book.AuthorRepo;
-import ua.skillsup.javacourse.homework.domain.book.Item;
+import ua.skillsup.javacourse.homework.domain.author.Author;
+import ua.skillsup.javacourse.homework.domain.author.AuthorRepo;
+import ua.skillsup.javacourse.homework.domain.item.Item;
 import ua.skillsup.javacourse.homework.domain.genre.Genre;
 import ua.skillsup.javacourse.homework.domain.genre.GenreRepo;
 
