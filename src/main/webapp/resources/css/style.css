@@ -1,0 +1,24 @@
+table.dottedBorder {
+    border-style: dotted;
+}
+
+table tr:nth-child(even) {
+    background-color: lightblue;
+}
+
+h2.clickable {
+    text-decoration: underline;
+    white-space: nowrap;
+}
+
+h2.clickable:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.format1 {
+    font-family: 'DejaVu Sans Mono', monospace;
+    text-align: center;
+    background-color: #66512c;
+
+}
