@@ -4,7 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-    <title>Book</title>
+    <title>Перегляд публікації</title>
     <jsp:include page="../includes.jsp"/>
 </head>
 <body>

@@ -1,24 +1,31 @@
-table.dottedBorder {
-    border-style: dotted;
+*{
+    color: #100f16;
+    font-family: Georgia;
 }
 
-table tr:nth-child(even) {
-    background-color: lightblue;
+#my-css-logo{
+    background-color: #e70031;
 }
 
-h2.clickable {
-    text-decoration: underline;
-    white-space: nowrap;
+#my-css-name{
+    color: #d1e7e7;
 }
 
-h2.clickable:hover {
-    color: blue;
-    cursor: pointer;
+#grean{
+    color: #120e26;
+}
+#wite {
+     color: #c7f4cd;
+ }
+.wite {
+    color: #c7f4cd;
 }
 
-.format1 {
-    font-family: 'DejaVu Sans Mono', monospace;
-    text-align: center;
-    background-color: #66512c;
+#my-css-title{
+    font-size: 18pt;
+    color: #2c255a;
+}
 
+body {
+    background-color: #eceff4;
 }

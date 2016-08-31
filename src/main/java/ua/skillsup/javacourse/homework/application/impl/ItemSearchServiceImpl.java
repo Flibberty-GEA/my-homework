@@ -47,11 +47,9 @@ public class ItemSearchServiceImpl implements ItemSearchService {
   @Override
   public List<Item> findAllItems() {return itemRepo.getAllItems();}
 
-  // this method simply delegates the call to repository
   @Override
   public List<Item> findItemByTitle(String title) {return itemRepo.findItemByTitle(title);}
 
-  // here we have some application related logic
   @Override
   public List<Item> findItemsForGenre(String genre) {return itemRepo.findItemsByGenre(genre, 5);}
 }

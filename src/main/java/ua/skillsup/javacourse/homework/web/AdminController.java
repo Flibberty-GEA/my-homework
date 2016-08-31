@@ -11,7 +11,6 @@ import javax.inject.Inject;
 
 import ua.skillsup.javacourse.homework.application.ItemSearchService;
 import ua.skillsup.javacourse.homework.application.EntityNotFoundException;
-import ua.skillsup.javacourse.homework.domain.author.Author;
 import ua.skillsup.javacourse.homework.domain.item.Item;
 
 @Controller

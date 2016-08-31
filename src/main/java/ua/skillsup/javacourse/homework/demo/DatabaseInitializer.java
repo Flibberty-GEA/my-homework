@@ -1,26 +1,25 @@
 package ua.skillsup.javacourse.homework.demo;
 
-import org.springframework.context.ApplicationListener; //
-import org.springframework.context.event.ContextRefreshedEvent; //
-import org.springframework.security.crypto.password.PasswordEncoder; //
-import org.springframework.security.crypto.password.StandardPasswordEncoder; //
-import org.springframework.stereotype.Component; //
-import org.springframework.transaction.annotation.Transactional; //
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.stream.Stream;
 
-import javax.inject.Inject; //
+import javax.inject.Inject;
 
-import lombok.extern.slf4j.Slf4j; //
+import lombok.extern.slf4j.Slf4j;
 import ua.skillsup.javacourse.homework.domain.author.Author;
-import ua.skillsup.javacourse.homework.domain.author.AuthorRepo; //
+import ua.skillsup.javacourse.homework.domain.author.AuthorRepo;
 import ua.skillsup.javacourse.homework.domain.item.Item;
 import ua.skillsup.javacourse.homework.domain.item.ItemRepo;
 import ua.skillsup.javacourse.homework.domain.genre.Genre;
-import ua.skillsup.javacourse.homework.domain.genre.GenreRepo; //
+import ua.skillsup.javacourse.homework.domain.genre.GenreRepo;
 import ua.skillsup.javacourse.homework.domain.security.User;
-import ua.skillsup.javacourse.homework.domain.security.UserRepo; //
+import ua.skillsup.javacourse.homework.domain.security.UserRepo;
 
 import static java.util.stream.Collectors.toSet;
 
@@ -58,7 +57,6 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
     initItems();
     initUsers();
 
-//    initMagazines();
   }
 
   private void initGenres() {

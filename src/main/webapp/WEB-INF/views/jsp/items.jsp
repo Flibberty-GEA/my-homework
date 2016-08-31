@@ -14,7 +14,7 @@
 <div class="container">
 
     <div class="row">
-        <h2>Нові публікації</h2>
+        <h2 id="my-css-title">Нові публікації</h2>
     </div>
 
     <div>

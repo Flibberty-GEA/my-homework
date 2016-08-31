@@ -2,8 +2,6 @@ package ua.skillsup.javacourse.homework.persistence;
 
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 import ua.skillsup.javacourse.homework.domain.author.Author;
 import ua.skillsup.javacourse.homework.domain.author.AuthorRepo;
 
