@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Book recommendations</title>
+    <title>Нові публікації</title>
     <jsp:include page="../includes.jsp"/>
 </head>
 <body>
@@ -14,17 +14,18 @@
 <div class="container">
 
     <div class="row">
-        <h2>Books recommended specially for you!</h2>
+        <h2>Нові публікації</h2>
     </div>
 
     <div>
         <table class="table table-striped table-bordered">
             <thead>
-            <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Published on</th>
-            </tr>
+                <tr>
+                    <th>Назва</th>
+                    <th>Автор</th>
+                    <th>Короткий зміст</th>
+                </tr>
+            </thead>
             <tbody>
             <c:forEach var="items" items="${items}">
                 <tr>

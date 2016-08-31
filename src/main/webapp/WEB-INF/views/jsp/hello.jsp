@@ -4,7 +4,7 @@
     <title>Hello</title>
 </head>
 <body>
-<h3>Hello, dear customer</h3>
-<a href="/books/recommendations">List of recommended publications</a>
+<h3>Запрошуємо Вас до стрічки новин</h3>
+<a href="/books/recommendations">Список свіжих публікацій</a>
 </body>
 </html>

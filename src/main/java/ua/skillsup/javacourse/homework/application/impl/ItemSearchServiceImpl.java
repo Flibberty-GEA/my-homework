@@ -7,8 +7,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import ua.skillsup.javacourse.homework.application.BookSearchService;
 import ua.skillsup.javacourse.homework.application.EntityNotFoundException;
+import ua.skillsup.javacourse.homework.application.ItemSearchService;
 import ua.skillsup.javacourse.homework.domain.book.Author;
 import ua.skillsup.javacourse.homework.domain.book.AuthorRepo;
 import ua.skillsup.javacourse.homework.domain.book.Item;
@@ -16,7 +16,7 @@ import ua.skillsup.javacourse.homework.domain.book.ItemRepo;
 
 @Service
 @Transactional
-public class BookSearchServiceImpl implements BookSearchService {
+public class ItemSearchServiceImpl implements ItemSearchService {
 
   @Inject
   private AuthorRepo authorRepo;

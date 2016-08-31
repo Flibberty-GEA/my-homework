@@ -5,7 +5,7 @@ import java.util.List;
 import ua.skillsup.javacourse.homework.domain.book.Author;
 import ua.skillsup.javacourse.homework.domain.book.Item;
 
-public interface BookSearchService {
+public interface ItemSearchService {
 
   List<Author> findAuthor(String name); //+
 

@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.inject.Inject;
 
-import ua.skillsup.javacourse.homework.application.BookSearchService;
+import ua.skillsup.javacourse.homework.application.ItemSearchService;
 import ua.skillsup.javacourse.homework.application.EntityNotFoundException;
 import ua.skillsup.javacourse.homework.domain.book.Item;
 
@@ -18,18 +18,18 @@ import ua.skillsup.javacourse.homework.domain.book.Item;
 public class AdminController {
 
   @Inject
-  private BookSearchService bookSearchService;
+  private ItemSearchService itemSearchService;
 
   @RequestMapping(path = "books/{id}", method = RequestMethod.POST)
   public String updateBook(@ModelAttribute Item item) throws EntityNotFoundException {
-    bookSearchService.updateItemInfo(item);
+    itemSearchService.updateItemInfo(item);
 
     return "redirect:/books/recommendations";
   }
 
   @RequestMapping(path = "books/{id}", method = RequestMethod.GET)
   public ModelAndView edit(@PathVariable("id") Long id) throws EntityNotFoundException {
-    final Item item = bookSearchService.getItem(id);
+    final Item item = itemSearchService.getItem(id);
 
     return new ModelAndView("book_edit", "book", item);
   }

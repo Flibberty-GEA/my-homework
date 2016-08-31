@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
-import ua.skillsup.javacourse.homework.application.BookEditService;
+import ua.skillsup.javacourse.homework.application.ItemEditService;
 import ua.skillsup.javacourse.homework.domain.book.Author;
 import ua.skillsup.javacourse.homework.domain.book.AuthorRepo;
 import ua.skillsup.javacourse.homework.domain.book.Item;
@@ -17,7 +17,7 @@ import ua.skillsup.javacourse.homework.domain.genre.GenreRepo;
 
 @Service
 @Transactional
-public class BookEditServiceImpl implements BookEditService {
+public class ItemEditServiceImpl implements ItemEditService {
 
   @Inject
   private AuthorRepo authorRepo;
@@ -59,7 +59,7 @@ public class BookEditServiceImpl implements BookEditService {
   }
 
   @Override
-  public void quickAddBookAndAuthor(String title, String authorName) {
+  public void quickAddItemAndAuthor(String title, String authorName) {
 
   }
 }

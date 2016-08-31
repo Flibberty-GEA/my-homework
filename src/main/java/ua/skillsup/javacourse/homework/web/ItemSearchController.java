@@ -12,20 +12,20 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import ua.skillsup.javacourse.homework.application.BookSearchService;
+import ua.skillsup.javacourse.homework.application.ItemSearchService;
 import ua.skillsup.javacourse.homework.application.EntityNotFoundException;
 import ua.skillsup.javacourse.homework.domain.book.Item;
 
 @Controller
 @RequestMapping("/books")
-public class BookSearchController {
+public class ItemSearchController {
 
   @Inject
-  private BookSearchService bookSearchService;
+  private ItemSearchService itemSearchService;
 
   @RequestMapping(path = "/allBooks", method = RequestMethod.GET)
   public String getAllBooks(Map<String, Object> model) {
-    final List<Item> items = bookSearchService.findItemsForGenre("Fantasy");
+    final List<Item> items = itemSearchService.findItemsForGenre("Fantasy");
 
     model.put("items", items);
 
@@ -34,7 +34,7 @@ public class BookSearchController {
 
   @RequestMapping(path = "/recommendations", method = RequestMethod.GET)
   public String getRecommendations(Map<String, Object> model) {
-    final List<Item> items = bookSearchService.findItemsForGenre("Fantasy");
+    final List<Item> items = itemSearchService.findItemsForGenre("Fantasy");
 
     model.put("items", items);
 
@@ -45,7 +45,7 @@ public class BookSearchController {
   public ModelAndView getBook(@PathVariable("id") Long id) throws EntityNotFoundException {
     SecurityContextHolder.getContext().getAuthentication();
 
-    final Item item = bookSearchService.getItem(id);
+    final Item item = itemSearchService.getItem(id);
 
     return new ModelAndView("book_view", "book", item);
   }
