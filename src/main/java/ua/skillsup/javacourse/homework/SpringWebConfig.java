@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @ComponentScan("ua.skillsup.javacourse.homework.web")
 @EnableWebMvc
-@Import(SpringPersistenceConfig.class)
+@Import({SpringPersistenceConfig.class, SpringSecurityConfig.class})
 public class SpringWebConfig extends WebMvcConfigurerAdapter {
 
   @Override
