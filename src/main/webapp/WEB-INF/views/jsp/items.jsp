@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.time.LocalDate" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
@@ -24,6 +25,7 @@
                     <th>Назва</th>
                     <th>Автор</th>
                     <th>Короткий зміст</th>
+                    <th>Дата публікації</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +36,7 @@
                     </td>
                     <td>${item.author.name}</td>
                     <td>${item.summary}</td>
+                    <td>${item.publicationsDate == LocalDate.now() ? 'сьогодні' : item.publicationsDate}</td>
                 </tr>
             </c:forEach>
             </tbody>
