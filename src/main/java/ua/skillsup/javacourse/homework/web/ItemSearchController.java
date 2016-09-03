@@ -25,7 +25,7 @@ public class ItemSearchController {
 
   @RequestMapping(path = "/allItems", method = RequestMethod.GET)
   public String getAllBooks(Map<String, Object> model) {
-    final List<Item> items = itemSearchService.findItemsForGenre("Fantasy");
+    final List<Item> items = itemSearchService.findAllItems();
 
     model.put("items", items);
 
@@ -34,7 +34,7 @@ public class ItemSearchController {
 
   @RequestMapping(path = "/recommendations", method = RequestMethod.GET)
   public String getRecommendations(Map<String, Object> model) {
-    final List<Item> items = itemSearchService.findAllItems();
+    final List<Item> items = itemSearchService.findItemsForTag("Java");
 
     model.put("items", items);
 

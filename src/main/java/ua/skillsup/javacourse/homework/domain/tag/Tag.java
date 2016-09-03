@@ -1,4 +1,4 @@
-package ua.skillsup.javacourse.homework.domain.genre;
+package ua.skillsup.javacourse.homework.domain.tag;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +14,7 @@ import lombok.ToString;
 @ToString
 
 @Entity
-public class Genre {
+public class Tag {
 
   @Id
   @GeneratedValue
@@ -23,10 +23,10 @@ public class Genre {
   @Column(nullable = false, unique = true)
   private String name;
 
-  public Genre() {
+  public Tag() {
   }
 
-  public Genre(String name) {
+  public Tag(String name) {
     this.name = name;
   }
 }

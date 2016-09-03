@@ -3,6 +3,7 @@ package ua.skillsup.javacourse.homework.application.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -12,8 +13,8 @@ import ua.skillsup.javacourse.homework.application.ItemEditService;
 import ua.skillsup.javacourse.homework.domain.author.Author;
 import ua.skillsup.javacourse.homework.domain.author.AuthorRepo;
 import ua.skillsup.javacourse.homework.domain.item.Item;
-import ua.skillsup.javacourse.homework.domain.genre.Genre;
-import ua.skillsup.javacourse.homework.domain.genre.GenreRepo;
+import ua.skillsup.javacourse.homework.domain.tag.Tag;
+import ua.skillsup.javacourse.homework.domain.tag.TagRepo;
 
 @Service
 @Transactional
@@ -23,7 +24,7 @@ public class ItemEditServiceImpl implements ItemEditService {
   private AuthorRepo authorRepo;
 
   @Inject
-  private GenreRepo genreRepo;
+  private TagRepo tagRepo;
 
   @Override
   @Transactional
@@ -35,25 +36,26 @@ public class ItemEditServiceImpl implements ItemEditService {
     return author;
   }
 
-  public Item createItem(Long authorId, String title, String summary, Set<String> genres) {
+  public Item createItem(Long authorId, String title, String summary, Set<String> tags) {
 
     final Author author = authorRepo.getById(authorId).get();
 
     final Item item = new Item();
     item.setTitle(title);
     item.setSummary(summary);
+    item.setPublicationsDate(LocalDate.now()); //?
     author.addItem(item);
 
-    final Set<Genre> itemGenres = genres.stream().map(g -> {
-      Genre genre = genreRepo.getGenre(g);
-      if (genre == null) {
-        genre = new Genre(g);
-        genreRepo.add(genre);
+    final Set<Tag> itemTags = tags.stream().map(t -> {
+      Tag tag = tagRepo.getTag(t);
+      if (tag == null) {
+        tag = new Tag(t);
+        tagRepo.add(tag);
       }
-      return genre;
+      return tag;
     }).collect(Collectors.toSet());
 
-    item.setGenres(itemGenres);
+    item.setTags(itemTags);
 
     return item;
   }

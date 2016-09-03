@@ -9,7 +9,7 @@ public interface ItemEditService {
 
   Author createAuthor(String name);
 
-  Item createItem(Long authorId, String title, String summary, Set<String> genres);
+  Item createItem(Long authorId, String title, String summary, Set<String> tags);
 
   void quickAddItemAndAuthor(String title, String authorName);
 

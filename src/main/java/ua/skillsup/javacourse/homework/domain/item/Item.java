@@ -1,5 +1,6 @@
 package ua.skillsup.javacourse.homework.domain.item;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -8,11 +9,11 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import ua.skillsup.javacourse.homework.domain.author.Author;
-import ua.skillsup.javacourse.homework.domain.genre.Genre;
+import ua.skillsup.javacourse.homework.domain.tag.Tag;
 
 @Data
 @EqualsAndHashCode(of = {"title", "author"})
-@ToString(exclude = {"summary", "genres"})
+@ToString(exclude = {"summary", "tags"})
 
 @Entity
 public class Item {
@@ -27,6 +28,9 @@ public class Item {
   @Column(name = "summary")
   private String summary;
 
+  @Column
+  private LocalDate publicationsDate;
+
 /*  @Column
   private LocalDate firstPublished;*/
 
@@ -34,6 +38,6 @@ public class Item {
   private Author author;
 
   @ManyToMany
-  private Set<Genre> genres;
+  private Set<Tag> tags;
 
 }

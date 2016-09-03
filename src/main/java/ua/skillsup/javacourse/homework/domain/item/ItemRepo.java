@@ -7,5 +7,5 @@ import java.util.List;
 public interface ItemRepo extends Repo<Item> {
     List<Item> getAllItems();
     List<Item> findItemByTitle(String title);
-    List<Item> findItemsByGenre(String genreName, int limit);
+    List<Item> findItemsByTag(String tsgeName, int limit);
 }

@@ -5,8 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import ua.skillsup.javacourse.homework.domain.item.Item;
 import ua.skillsup.javacourse.homework.domain.item.ItemRepo;
-import ua.skillsup.javacourse.homework.domain.genre.Genre;
-import ua.skillsup.javacourse.homework.domain.genre.GenreRepo;
+import ua.skillsup.javacourse.homework.domain.tag.Tag;
+import ua.skillsup.javacourse.homework.domain.tag.TagRepo;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -22,7 +22,7 @@ public class ItemRepoImpl extends GenericRepo<Item> implements ItemRepo {
   private SessionFactory session;
 
   @Inject
-  private GenreRepo genreRepo;
+  private TagRepo tagRepo;
 
   @Override
   public List<Item> getAllItems(){return getAll();}
@@ -38,20 +38,18 @@ public class ItemRepoImpl extends GenericRepo<Item> implements ItemRepo {
   }
 
   @Override
-  public List<Item> findItemsByGenre(String genreName, int limit) {
-    final Genre genre = genreRepo.getGenre(genreName);
+  public List<Item> findItemsByTag(String tagName, int limit) {
+    final Tag tag = tagRepo.getTag(tagName);
 
     return Util.castList(
             session.getCurrentSession()
                     .createQuery(
                             "FROM Item i " +
-                                    "WHERE :g member of i.genres " +
+                                    "WHERE :t member of i.tags " +
                                     "ORDER BY i.id")
-                    .setParameter("g", genre)
+                    .setParameter("t", tag)
                     .setMaxResults(limit)
                     .list()
     );
-
-
   }
 }

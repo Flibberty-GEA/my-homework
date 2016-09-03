@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.stream.Stream;
 
 import javax.inject.Inject;
@@ -16,8 +17,8 @@ import ua.skillsup.javacourse.homework.domain.author.Author;
 import ua.skillsup.javacourse.homework.domain.author.AuthorRepo;
 import ua.skillsup.javacourse.homework.domain.item.Item;
 import ua.skillsup.javacourse.homework.domain.item.ItemRepo;
-import ua.skillsup.javacourse.homework.domain.genre.Genre;
-import ua.skillsup.javacourse.homework.domain.genre.GenreRepo;
+import ua.skillsup.javacourse.homework.domain.tag.Tag;
+import ua.skillsup.javacourse.homework.domain.tag.TagRepo;
 import ua.skillsup.javacourse.homework.domain.security.User;
 import ua.skillsup.javacourse.homework.domain.security.UserRepo;
 
@@ -33,7 +34,7 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
   private AuthorRepo authorRepo;
 
   @Inject
-  private GenreRepo genreRepo;
+  private TagRepo tagRepo;
 
   @Inject
   private ItemRepo itemRepo;
@@ -52,17 +53,17 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
   }
 
   private void initDb() {
-    initGenres();
+    initTags();
       initAuthors();
     initItems();
     initUsers();
 
   }
 
-  private void initGenres() {
-    Stream.of("Fantasy", "Adventure", "Sci-fi", "Drama", "Utopia")
-        .map(Genre::new)
-        .forEach(genreRepo::add);
+  private void initTags() {
+    Stream.of("Java", "PHP", "ООП", "JavaScript", "Разработка мобильных приложений")
+        .map(Tag::new)
+        .forEach(tagRepo::add);
   }
 
     private void initAuthors() {
@@ -72,40 +73,43 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
     }
 
   private void initItems() {
-      final Author author  = authorRepo.findByName("John");
+    final Author author  = authorRepo.findByName("John");
     final Item item1 = new Item();
 
-      item1.setTitle("Title of item1");
-      item1.setAuthor(author);
-      item1.setSummary("Summary of item1");
-      item1.setGenres(
-        Stream.of("Fantasy", "Adventure")
-            .map(genreRepo::getGenre)
-            .collect(toSet())
-      );
-      author.addItem(item1);
+    item1.setTitle("Title of item1");
+    item1.setAuthor(author);
+    item1.setSummary("Summary of item1");
+    item1.setPublicationsDate(LocalDate.parse("2016-07-29"));
+    item1.setTags(
+      Stream.of("Java", "ООП")
+          .map(tagRepo::getTag)
+          .collect(toSet())
+    );
+    author.addItem(item1);
 
-      final Item item2 = new Item();
-      item2.setTitle("Title of item2");
-      item2.setAuthor(author);
-      item2.setSummary("Summary of item2");
-      item2.setGenres(
-              Stream.of("Fantasy", "Adventure")
-                      .map(genreRepo::getGenre)
-                      .collect(toSet())
-      );
-      author.addItem(item2);
+    final Item item2 = new Item();
+    item2.setTitle("Title of item2");
+    item2.setAuthor(author);
+    item2.setSummary("Summary of item2");
+    item2.setPublicationsDate(LocalDate.parse("2016-08-08"));
+    item2.setTags(
+            Stream.of("Java", "Разработка мобильных приложений")
+                    .map(tagRepo::getTag)
+                    .collect(toSet())
+    );
+    author.addItem(item2);
 
-      final Item item3 = new Item();
-      item3.setTitle("Title of item3");
-      item3.setAuthor(author);
-      item3.setSummary("Summary of item3");
-      item3.setGenres(
-              Stream.of("Fantasy", "Adventure")
-                      .map(genreRepo::getGenre)
-                      .collect(toSet())
-      );
-      author.addItem(item3);
+    final Item item3 = new Item();
+    item3.setTitle("Title of item3");
+    item3.setAuthor(author);
+    item3.setSummary("Summary of item3");
+    item3.setPublicationsDate(LocalDate.now());
+    item3.setTags(
+            Stream.of("JavaScript")
+                    .map(tagRepo::getTag)
+                    .collect(toSet())
+    );
+    author.addItem(item3);
   }
 
   private void initUsers() {

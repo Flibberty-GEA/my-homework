@@ -13,7 +13,7 @@ public interface ItemSearchService {
 
   List<Item> findItemByTitle(String title); //+
 
-  List<Item> findItemsForGenre(String genre);
+  List<Item> findItemsForTag(String tag);
 
   Item getItem(Long id) throws EntityNotFoundException; //+
 

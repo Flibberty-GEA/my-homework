@@ -35,6 +35,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 
     origItem.setTitle(item.getTitle());
     origItem.setSummary(item.getSummary());
+    origItem.setPublicationsDate(item.getPublicationsDate());
 
     return origItem;
   }
@@ -51,5 +52,5 @@ public class ItemSearchServiceImpl implements ItemSearchService {
   public List<Item> findItemByTitle(String title) {return itemRepo.findItemByTitle(title);}
 
   @Override
-  public List<Item> findItemsForGenre(String genre) {return itemRepo.findItemsByGenre(genre, 5);}
+  public List<Item> findItemsForTag(String tag) {return itemRepo.findItemsByTag(tag, 5);}
 }
