@@ -1,7 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 
 <jsp:include page="../header.jsp">
     <jsp:param name="activePage" value="ALL"/>
@@ -13,11 +13,13 @@
     </ol>
 
     <div class="row">
-        <h2 id="my-css-title">Зміст</h2>
+        <h2 id="my-css-title">Зміст
+            <c:forEach var="tag" items="${item.tags}">${tag.name}</c:forEach></h2>
     </div>
 
 
     <div class="row">
+
         <form:form modelAttribute="item" action="/admin/items/${item.id}">
             <div class="form-group">
                 <div class="row">
@@ -31,8 +33,7 @@
 
 
                         <label for="itemTitle">Автор</label>
-                        <form:input type="text" path="author.name" class="form-control"
-                                    id="itemTitle"
+                        <form:input type="text" path="author.name" class="form-control" id="itemTitle"
                                     placeholder="Email" readonly="${param.readonly}"/>
                     </div>
 

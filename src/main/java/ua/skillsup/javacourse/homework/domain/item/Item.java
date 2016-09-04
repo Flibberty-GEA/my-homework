@@ -31,13 +31,10 @@ public class Item {
   @Column
   private LocalDate publicationsDate;
 
-/*  @Column
-  private LocalDate firstPublished;*/
-
   @ManyToOne(optional = false)
   private Author author;
 
-  @ManyToMany
+  @ManyToMany(fetch = FetchType.EAGER)
   private Set<Tag> tags;
 
 }

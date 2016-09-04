@@ -61,7 +61,7 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
   }
 
   private void initTags() {
-    Stream.of("Java", "PHP", "ООП", "JavaScript", "Разработка мобильных приложений")
+    Stream.of("Java", "PHP", "OOP", "JavaScript", "Development")
         .map(Tag::new)
         .forEach(tagRepo::add);
   }
@@ -81,7 +81,7 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
     item1.setSummary("Summary of item1");
     item1.setPublicationsDate(LocalDate.parse("2016-07-29"));
     item1.setTags(
-      Stream.of("Java", "ООП")
+      Stream.of("Java", "OOP")
           .map(tagRepo::getTag)
           .collect(toSet())
     );
@@ -93,7 +93,7 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
     item2.setSummary("Summary of item2");
     item2.setPublicationsDate(LocalDate.parse("2016-08-08"));
     item2.setTags(
-            Stream.of("Java", "Разработка мобильных приложений")
+            Stream.of("Java", "Development")
                     .map(tagRepo::getTag)
                     .collect(toSet())
     );

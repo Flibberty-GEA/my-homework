@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.time.LocalDate" %>
+<%@ page import="ua.skillsup.javacourse.homework.domain.item.Item" %>
+<%@ page import="java.util.List" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
@@ -31,7 +33,6 @@
             </thead>
             <tbody>
             <c:forEach var="item" items="${items}">
-            
                 <tr>
                     <td>
                         <a href="/items/${item.id}"> ${item.title} </a>
