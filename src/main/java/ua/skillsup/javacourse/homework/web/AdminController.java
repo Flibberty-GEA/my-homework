@@ -9,9 +9,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.inject.Inject;
 
+import ua.skillsup.javacourse.homework.application.ItemEditService;
 import ua.skillsup.javacourse.homework.application.ItemSearchService;
 import ua.skillsup.javacourse.homework.application.EntityNotFoundException;
 import ua.skillsup.javacourse.homework.domain.item.Item;
+import ua.skillsup.javacourse.homework.domain.tag.Tag;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Controller
 @RequestMapping(path = "/admin")
@@ -19,6 +25,9 @@ public class AdminController {
 
   @Inject
   private ItemSearchService itemSearchService;
+
+    @Inject
+    private ItemEditService itemEditService;
 
   @RequestMapping(path = "items/{id}", method = RequestMethod.POST)
   public String updateBook(@ModelAttribute Item item) throws EntityNotFoundException {
@@ -31,4 +40,28 @@ public class AdminController {
     final Item item = itemSearchService.getItem(id);
     return new ModelAndView("item_edit", "item", item);
   }
+
+    @RequestMapping(path = "/create", method = RequestMethod.POST)
+    public String updateItem(@ModelAttribute Item item) throws EntityNotFoundException {
+/*        Set<Tag> tags = item.getTags();
+        Set<String> tagsNames = null;
+        for (Tag tag: tags){
+            tagsNames.add(tag.getName());
+        }*/
+        itemEditService.createItem("John", item.getTitle(), item.getSummary());
+        return "redirect:/items/recommendations";
+    }
+
+    @RequestMapping(path = "/create", method = RequestMethod.GET)
+    public String createItem(Map<String, Object> model) throws EntityNotFoundException {
+        final Item item = new Item();
+        model.put("item", item);
+        return "create";
+    }
+
+/*  @RequestMapping(path = "/create", method = RequestMethod.GET)
+  public ModelAndView createItem(Map<String, Object> model) throws EntityNotFoundException {
+    final Item item = new Item();
+    return new ModelAndView("create", "item", item);
+  }*/
 }

@@ -36,17 +36,18 @@ public class ItemEditServiceImpl implements ItemEditService {
     return author;
   }
 
-  public Item createItem(Long authorId, String title, String summary, Set<String> tags) {
+  public Item createItem(String authorName, String title, String summary/*, Set<String> tags*/) {
 
-    final Author author = authorRepo.getById(authorId).get();
+    final Author author = authorRepo.findByName(authorName);
 
     final Item item = new Item();
     item.setTitle(title);
     item.setSummary(summary);
     item.setPublicationsDate(LocalDate.now()); //?
+    item.setTags(tagRepo.getAll());//?
     author.addItem(item);
 
-    final Set<Tag> itemTags = tags.stream().map(t -> {
+/*    final Set<Tag> itemTags = tags.stream().map(t -> {
       Tag tag = tagRepo.getTag(t);
       if (tag == null) {
         tag = new Tag(t);
@@ -55,7 +56,7 @@ public class ItemEditServiceImpl implements ItemEditService {
       return tag;
     }).collect(Collectors.toSet());
 
-    item.setTags(itemTags);
+    item.setTags(itemTags);*/
 
     return item;
   }

@@ -22,6 +22,7 @@ import ua.skillsup.javacourse.homework.domain.tag.TagRepo;
 import ua.skillsup.javacourse.homework.domain.security.User;
 import ua.skillsup.javacourse.homework.domain.security.UserRepo;
 
+import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 
 @Slf4j
@@ -83,7 +84,7 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
     item1.setTags(
       Stream.of("Java", "OOP")
           .map(tagRepo::getTag)
-          .collect(toSet())
+          .collect(toList())
     );
     author.addItem(item1);
 
@@ -95,7 +96,7 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
     item2.setTags(
             Stream.of("Java", "Development")
                     .map(tagRepo::getTag)
-                    .collect(toSet())
+                    .collect(toList())
     );
     author.addItem(item2);
 
@@ -107,7 +108,7 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
     item3.setTags(
             Stream.of("JavaScript")
                     .map(tagRepo::getTag)
-                    .collect(toSet())
+                    .collect(toList())
     );
     author.addItem(item3);
   }

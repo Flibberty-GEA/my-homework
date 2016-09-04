@@ -27,14 +27,14 @@
 
                         <label for="itemTitle">Назва</label>
                         <form:input type="text" path="title" class="form-control" id="itemTitle"
-                                    placeholder="Email" readonly="${param.readonly}"/>
+                                    placeholder="Write title of item" readonly="${param.readonly}"/>
                     </div>
                     <div class="col-md-6">
 
 
                         <label for="itemTitle">Автор</label>
                         <form:input type="text" path="author.name" class="form-control" id="itemTitle"
-                                    placeholder="Email" readonly="${param.readonly}"/>
+                                    placeholder="Write author name" readonly="${param.readonly}"/>
                     </div>
 
                 </div>
@@ -47,7 +47,7 @@
 
                         <label for="itemTitle">Короткий зміст</label>
                         <form:input type="text" path="summary" class="form-control" id="itemTitle"
-                                    placeholder="Email" readonly="${param.readonly}"/>
+                                    placeholder="Write some summary" readonly="${param.readonly}"/>
                     </div>
                 </div>
             </div>

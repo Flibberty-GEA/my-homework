@@ -1,6 +1,7 @@
 package ua.skillsup.javacourse.homework.domain.item;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -35,6 +36,6 @@ public class Item {
   private Author author;
 
   @ManyToMany(fetch = FetchType.EAGER)
-  private Set<Tag> tags;
+  private List<Tag> tags;
 
 }

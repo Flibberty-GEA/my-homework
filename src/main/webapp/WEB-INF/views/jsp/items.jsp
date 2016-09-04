@@ -2,6 +2,7 @@
 <%@ page import="java.time.LocalDate" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>Нові публікації</title>
@@ -42,6 +43,13 @@
             </tbody>
         </table>
     </div>
+
+    <div>
+        <sec:authorize access="hasRole('ADMIN')">
+            <a href="/admin/create" class="btn btn-danger">Створити нову публікацію</a>
+        </sec:authorize>
+    </div>
+
 </div>
 
 </body>
