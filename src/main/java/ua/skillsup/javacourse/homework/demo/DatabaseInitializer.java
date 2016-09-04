@@ -115,16 +115,16 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
 
   private void initUsers() {
     final User user = new User();
-    user.setUsername("user1");
-    user.setPassword(passwordEncoder.encode("userpass123"));
+    user.setUsername("user");
+    user.setPassword(passwordEncoder.encode("pass"));
     user.setAdmin(false);
     user.setEnabled(true);
 
     userRepo.add(user);
 
     final User admin = new User();
-    admin.setUsername("admin1");
-    admin.setPassword(passwordEncoder.encode("adminpass123"));
+    admin.setUsername("admin");
+    admin.setPassword(passwordEncoder.encode("pass"));
     admin.setAdmin(true);
     admin.setEnabled(true);
 

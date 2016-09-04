@@ -1,5 +1,6 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <nav class="navbar navbar-default" id="my-css-logo">
@@ -16,15 +17,18 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
-        <li><form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Назва">
-            </div>
-            <button type="submit" class="btn btn-default">Пошук</button>
-        </form></li>
+
+
+    <li><form action="/items/search" method="get" class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Назва" name="title" >
+        </div>
+        <input type="submit" class="btn btn-default" value="Пошук">
+    </form></li>
+
+
     <li><a href="#" style="color: #c7f4cd">Контакти</a></li>
         <li style="padding-right: 15px"><a href="<c:url value='/logout' />" style="color: #c7f4cd">Вийти</a></li>
-
     </ul>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

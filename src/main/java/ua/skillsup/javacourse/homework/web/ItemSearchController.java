@@ -2,9 +2,7 @@ package ua.skillsup.javacourse.homework.web;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -24,7 +22,7 @@ public class ItemSearchController {
   private ItemSearchService itemSearchService;
 
   @RequestMapping(path = "/allItems", method = RequestMethod.GET)
-  public String getAllBooks(Map<String, Object> model) {
+  public String getAllItems(Map<String, Object> model) {
     final List<Item> items = itemSearchService.findAllItems();
 
     model.put("items", items);
@@ -48,5 +46,12 @@ public class ItemSearchController {
     final Item item = itemSearchService.getItem(id);
 
     return new ModelAndView("item_view", "item", item);
+  }
+
+  @RequestMapping(path = "/search", method = RequestMethod.GET)
+  public String searchItem(@RequestParam("title") String title, Map<String, Object> model) throws EntityNotFoundException {
+    final List<Item> items = itemSearchService.findItemByTitle(title);
+    model.put("items", items);
+    return "search";
   }
 }

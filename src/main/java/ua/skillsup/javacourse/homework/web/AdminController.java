@@ -43,11 +43,6 @@ public class AdminController {
 
     @RequestMapping(path = "/create", method = RequestMethod.POST)
     public String updateItem(@ModelAttribute Item item) throws EntityNotFoundException {
-/*        Set<Tag> tags = item.getTags();
-        Set<String> tagsNames = null;
-        for (Tag tag: tags){
-            tagsNames.add(tag.getName());
-        }*/
         itemEditService.createItem("John", item.getTitle(), item.getSummary());
         return "redirect:/items/recommendations";
     }
@@ -59,9 +54,4 @@ public class AdminController {
         return "create";
     }
 
-/*  @RequestMapping(path = "/create", method = RequestMethod.GET)
-  public ModelAndView createItem(Map<String, Object> model) throws EntityNotFoundException {
-    final Item item = new Item();
-    return new ModelAndView("create", "item", item);
-  }*/
 }

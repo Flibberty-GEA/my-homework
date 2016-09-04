@@ -36,6 +36,9 @@ public class Item {
   private Author author;
 
   @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable (name = "item_tag",
+              joinColumns = @JoinColumn(name="tag_id"),
+              inverseJoinColumns = @JoinColumn(name = "item_id"))
   private List<Tag> tags;
 
 }

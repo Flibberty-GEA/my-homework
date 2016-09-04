@@ -29,11 +29,12 @@ public class ItemRepoImpl extends GenericRepo<Item> implements ItemRepo {
 
   @Override
   public List<Item> findItemByTitle (String title) {
+/*    return findWhereFieldLike("title", title);*/
     // todo: check this for n+1 problem
             return Util.castList(
             session.getCurrentSession()
-                    .createQuery("FROM Item i where i.title LIKE :nm")
-                    .setParameter("nm", "%" + title + "%")
+                    .createQuery("FROM Item i where i.title LIKE :title")
+                    .setParameter("title", "%" + title + "%")
                     .list());
   }
 
