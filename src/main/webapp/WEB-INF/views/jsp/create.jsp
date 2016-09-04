@@ -28,7 +28,7 @@
 
     <div class="row">
 
-        <form:form modelAttribute="item" action="/admin/create">
+        <form:form modelAttribute="item" action="/items/create">
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-6">

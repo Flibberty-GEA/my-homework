@@ -13,17 +13,14 @@ import java.util.stream.Stream;
 import javax.inject.Inject;
 
 import lombok.extern.slf4j.Slf4j;
-import ua.skillsup.javacourse.homework.domain.author.Author;
-import ua.skillsup.javacourse.homework.domain.author.AuthorRepo;
 import ua.skillsup.javacourse.homework.domain.item.Item;
 import ua.skillsup.javacourse.homework.domain.item.ItemRepo;
 import ua.skillsup.javacourse.homework.domain.tag.Tag;
 import ua.skillsup.javacourse.homework.domain.tag.TagRepo;
-import ua.skillsup.javacourse.homework.domain.security.User;
-import ua.skillsup.javacourse.homework.domain.security.UserRepo;
+import ua.skillsup.javacourse.homework.domain.user.User;
+import ua.skillsup.javacourse.homework.domain.user.UserRepo;
 
 import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toSet;
 
 @Slf4j
 @Component
@@ -31,8 +28,6 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
 
   //private static final Logger log = LoggerFactory.getLogger(DatabaseInitializer.class);
 
-  @Inject
-  private AuthorRepo authorRepo;
 
   @Inject
   private TagRepo tagRepo;
@@ -55,9 +50,9 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
 
   private void initDb() {
     initTags();
-      initAuthors();
-    initItems();
     initUsers();
+    initItems();
+
 
   }
 
@@ -67,18 +62,14 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
         .forEach(tagRepo::add);
   }
 
-    private void initAuthors() {
-        final Author author = new Author();
-        author.setName("John");
-        authorRepo.add(author);
-    }
+
 
   private void initItems() {
-    final Author author  = authorRepo.findByName("John");
+    final User user  = userRepo.findByName("admin");
     final Item item1 = new Item();
 
     item1.setTitle("Title of item1");
-    item1.setAuthor(author);
+    item1.setUser(user);
     item1.setSummary("Summary of item1");
     item1.setPublicationsDate(LocalDate.parse("2016-07-29"));
     item1.setTags(
@@ -86,11 +77,11 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
           .map(tagRepo::getTag)
           .collect(toList())
     );
-    author.addItem(item1);
+    user.addItem(item1);
 
     final Item item2 = new Item();
     item2.setTitle("Title of item2");
-    item2.setAuthor(author);
+    item2.setUser(user);
     item2.setSummary("Summary of item2");
     item2.setPublicationsDate(LocalDate.parse("2016-08-08"));
     item2.setTags(
@@ -98,11 +89,11 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
                     .map(tagRepo::getTag)
                     .collect(toList())
     );
-    author.addItem(item2);
+    user.addItem(item2);
 
     final Item item3 = new Item();
     item3.setTitle("Title of item3");
-    item3.setAuthor(author);
+    item3.setUser(user);
     item3.setSummary("Summary of item3");
     item3.setPublicationsDate(LocalDate.now());
     item3.setTags(
@@ -110,7 +101,7 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
                     .map(tagRepo::getTag)
                     .collect(toList())
     );
-    author.addItem(item3);
+    user.addItem(item3);
   }
 
   private void initUsers() {

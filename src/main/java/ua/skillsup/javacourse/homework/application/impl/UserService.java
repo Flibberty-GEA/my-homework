@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 
-import ua.skillsup.javacourse.homework.domain.security.UserRepo;
+import ua.skillsup.javacourse.homework.domain.user.UserRepo;
 
 import static java.util.stream.Collectors.toSet;
 

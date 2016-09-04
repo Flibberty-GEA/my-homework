@@ -2,12 +2,12 @@ package ua.skillsup.javacourse.homework.application;
 
 import java.util.List;
 
-import ua.skillsup.javacourse.homework.domain.author.Author;
 import ua.skillsup.javacourse.homework.domain.item.Item;
+import ua.skillsup.javacourse.homework.domain.user.User;
 
 public interface ItemSearchService {
 
-  Author findAuthor(String name); //+
+  User findUser(String username); //+
 
   List<Item> findAllItems();
 

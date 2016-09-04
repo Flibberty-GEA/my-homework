@@ -35,7 +35,7 @@
                     <td>
                         <a href="/items/${item.id}"> ${item.title} </a>
                     </td>
-                    <td>${item.author.name}</td>
+                    <td>${item.user.username}</td>
                     <td>${item.summary}</td>
                     <td>${item.publicationsDate == LocalDate.now() ? 'сьогодні' : item.publicationsDate}</td>
                 </tr>
@@ -45,9 +45,10 @@
     </div>
 
     <div>
-        <sec:authorize access="hasRole('ADMIN')">
+        <a href="/items/create" class="btn btn-danger">Створити нову публікацію</a>
+<%--        <sec:authorize access="hasRole('ADMIN')">
             <a href="/admin/create" class="btn btn-danger">Створити нову публікацію</a>
-        </sec:authorize>
+        </sec:authorize>--%>
     </div>
 
 </div>

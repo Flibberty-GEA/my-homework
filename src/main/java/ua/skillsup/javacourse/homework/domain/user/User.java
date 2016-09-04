@@ -1,16 +1,16 @@
-package ua.skillsup.javacourse.homework.domain.security;
+package ua.skillsup.javacourse.homework.domain.user;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import ua.skillsup.javacourse.homework.domain.item.Item;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.singleton;
@@ -18,7 +18,7 @@ import static java.util.Collections.unmodifiableSet;
 
 @Data
 @EqualsAndHashCode(of = "username")
-@ToString(exclude = "password")
+@ToString(exclude = {"items", "password"})
 
 @Entity
 public class User {
@@ -49,6 +49,20 @@ public class User {
     public static final Set<Role> REGULAR_USER = singleton(ROLE_USER);
     public static final Set<Role> ADMIN = unmodifiableSet(new HashSet<>(asList(ROLE_USER,
                                                                                ROLE_ADMIN)));
+  }
+
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  private List<Item> items;
+
+  @Version
+  private Integer version;
+
+  public void addItem(Item item) {
+    item.setUser(this);
+    if (items == null) {
+      items = new ArrayList<>();
+    }
+    this.items.add(item);
   }
 
 }

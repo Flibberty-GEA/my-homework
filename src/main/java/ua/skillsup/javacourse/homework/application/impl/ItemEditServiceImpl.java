@@ -4,16 +4,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
 import ua.skillsup.javacourse.homework.application.ItemEditService;
-import ua.skillsup.javacourse.homework.domain.author.Author;
-import ua.skillsup.javacourse.homework.domain.author.AuthorRepo;
 import ua.skillsup.javacourse.homework.domain.item.Item;
-import ua.skillsup.javacourse.homework.domain.tag.Tag;
+import ua.skillsup.javacourse.homework.domain.user.User;
+import ua.skillsup.javacourse.homework.domain.user.UserRepo;
 import ua.skillsup.javacourse.homework.domain.tag.TagRepo;
 
 @Service
@@ -21,31 +18,34 @@ import ua.skillsup.javacourse.homework.domain.tag.TagRepo;
 public class ItemEditServiceImpl implements ItemEditService {
 
   @Inject
-  private AuthorRepo authorRepo;
+  private UserRepo userRepo;
 
   @Inject
   private TagRepo tagRepo;
 
   @Override
   @Transactional
-  public Author createAuthor(String name) {
-    final Author author = new Author();
-    author.setName(name);
+  public User createUser(String username, String password) {
+    final User user = new User();
+    user.setUsername(username);
+    user.setPassword(password);
+    user.setAdmin(false);
+    user.setEnabled(true);
 
-    authorRepo.add(author);
-    return author;
+    userRepo.add(user);
+    return user;
   }
 
-  public Item createItem(String authorName, String title, String summary/*, Set<String> tags*/) {
+  public Item createItem(String username, String title, String summary/*, Set<String> tags*/) {
 
-    final Author author = authorRepo.findByName(authorName);
+    final User user = userRepo.findByName(username);
 
     final Item item = new Item();
     item.setTitle(title);
     item.setSummary(summary);
     item.setPublicationsDate(LocalDate.now()); //?
     item.setTags(tagRepo.getAll());//?
-    author.addItem(item);
+    user.addItem(item);
 
 /*    final Set<Tag> itemTags = tags.stream().map(t -> {
       Tag tag = tagRepo.getTag(t);
@@ -62,7 +62,7 @@ public class ItemEditServiceImpl implements ItemEditService {
   }
 
   @Override
-  public void quickAddItemAndAuthor(String title, String authorName) {
+  public void quickAddItemAndUser(String title, String username) {
 
   }
 }

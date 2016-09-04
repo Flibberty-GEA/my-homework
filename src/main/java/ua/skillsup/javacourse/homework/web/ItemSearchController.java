@@ -10,6 +10,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import ua.skillsup.javacourse.homework.application.ItemEditService;
 import ua.skillsup.javacourse.homework.application.ItemSearchService;
 import ua.skillsup.javacourse.homework.application.EntityNotFoundException;
 import ua.skillsup.javacourse.homework.domain.item.Item;
@@ -20,6 +21,9 @@ public class ItemSearchController {
 
   @Inject
   private ItemSearchService itemSearchService;
+
+  @Inject
+  private ItemEditService itemEditService;
 
   @RequestMapping(path = "/allItems", method = RequestMethod.GET)
   public String getAllItems(Map<String, Object> model) {
@@ -53,5 +57,18 @@ public class ItemSearchController {
     final List<Item> items = itemSearchService.findItemByTitle(title);
     model.put("items", items);
     return "search";
+  }
+
+  @RequestMapping(path = "/create", method = RequestMethod.POST)
+  public String updateItem(@ModelAttribute Item item) throws EntityNotFoundException {
+    itemEditService.createItem("admin", item.getTitle(), item.getSummary());
+    return "redirect:/items/recommendations";
+  }
+
+  @RequestMapping(path = "/create", method = RequestMethod.GET)
+  public String createItem(Map<String, Object> model) throws EntityNotFoundException {
+    final Item item = new Item();
+    model.put("item", item);
+    return "create";
   }
 }

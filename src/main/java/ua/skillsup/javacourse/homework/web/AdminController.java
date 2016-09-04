@@ -41,17 +41,6 @@ public class AdminController {
     return new ModelAndView("item_edit", "item", item);
   }
 
-    @RequestMapping(path = "/create", method = RequestMethod.POST)
-    public String updateItem(@ModelAttribute Item item) throws EntityNotFoundException {
-        itemEditService.createItem("John", item.getTitle(), item.getSummary());
-        return "redirect:/items/recommendations";
-    }
 
-    @RequestMapping(path = "/create", method = RequestMethod.GET)
-    public String createItem(Map<String, Object> model) throws EntityNotFoundException {
-        final Item item = new Item();
-        model.put("item", item);
-        return "create";
-    }
 
 }

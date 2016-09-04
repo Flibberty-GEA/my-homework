@@ -1,16 +1,14 @@
 package ua.skillsup.javacourse.homework.application;
 
-import java.util.Set;
-
-import ua.skillsup.javacourse.homework.domain.author.Author;
 import ua.skillsup.javacourse.homework.domain.item.Item;
+import ua.skillsup.javacourse.homework.domain.user.User;
 
 public interface ItemEditService {
 
-  Author createAuthor(String name);
+  User createUser(String username, String password);
 
-  Item createItem(String authorName, String title, String summary);
+  Item createItem(String username, String title, String summary);
 
-  void quickAddItemAndAuthor(String title, String authorName);
+  void quickAddItemAndUser(String title, String username);
 
 }

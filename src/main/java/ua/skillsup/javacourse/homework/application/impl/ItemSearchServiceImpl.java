@@ -3,23 +3,28 @@ package ua.skillsup.javacourse.homework.application.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import ua.skillsup.javacourse.homework.application.EntityNotFoundException;
 import ua.skillsup.javacourse.homework.application.ItemSearchService;
-import ua.skillsup.javacourse.homework.domain.author.Author;
-import ua.skillsup.javacourse.homework.domain.author.AuthorRepo;
 import ua.skillsup.javacourse.homework.domain.item.Item;
 import ua.skillsup.javacourse.homework.domain.item.ItemRepo;
+import ua.skillsup.javacourse.homework.domain.user.User;
+import ua.skillsup.javacourse.homework.domain.user.UserRepo;
 
 @Service
 @Transactional
 public class ItemSearchServiceImpl implements ItemSearchService {
 
   @Inject
-  private AuthorRepo authorRepo;
+  private UserRepo userRepo;
 
   @Inject
   private ItemRepo itemRepo;
@@ -32,17 +37,16 @@ public class ItemSearchServiceImpl implements ItemSearchService {
   @Override
   public Item updateItemInfo(Item item) throws EntityNotFoundException {
     final Item origItem = getItem(item.getId());
-
     origItem.setTitle(item.getTitle());
     origItem.setSummary(item.getSummary());
-    origItem.setPublicationsDate(item.getPublicationsDate());
+/*    origItem.setPublicationsDate(LocalDate.now());*/
 
     return origItem;
   }
 
   @Override
-  public Author findAuthor(String name) {
-    return authorRepo.findByName(name);
+  public User findUser(String username) {
+    return userRepo.findByName(username);
   }
 
   @Override
@@ -53,4 +57,6 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 
   @Override
   public List<Item> findItemsForTag(String tag) {return itemRepo.findItemsByTag(tag, 5);}
+
+
 }

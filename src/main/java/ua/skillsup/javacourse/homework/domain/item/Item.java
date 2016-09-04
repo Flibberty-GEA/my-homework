@@ -2,14 +2,13 @@ package ua.skillsup.javacourse.homework.domain.item;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.*;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import ua.skillsup.javacourse.homework.domain.author.Author;
+import ua.skillsup.javacourse.homework.domain.user.User;
 import ua.skillsup.javacourse.homework.domain.tag.Tag;
 
 @Data
@@ -33,7 +32,7 @@ public class Item {
   private LocalDate publicationsDate;
 
   @ManyToOne(optional = false)
-  private Author author;
+  private User user;
 
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable (name = "item_tag",

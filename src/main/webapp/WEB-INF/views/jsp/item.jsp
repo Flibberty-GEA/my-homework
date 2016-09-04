@@ -33,7 +33,7 @@
 
 
                         <label for="itemTitle">Автор</label>
-                        <form:input type="text" path="author.name" class="form-control" id="itemTitle"
+                        <form:input type="text" path="user.username" class="form-control" id="itemTitle"
                                     placeholder="Write author name" readonly="${param.readonly}"/>
                     </div>
 

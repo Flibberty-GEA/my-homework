@@ -37,7 +37,7 @@
                     <td>
                         <a href="/items/${item.id}"> ${item.title} </a>
                     </td>
-                    <td>${item.author.name}</td>
+                    <td>${item.user.username}</td>
                     <td>${item.summary}</td>
                     <td>${item.publicationsDate == LocalDate.now() ? 'сьогодні' : item.publicationsDate}</td>
                 </tr>
