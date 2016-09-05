@@ -4,11 +4,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
 import ua.skillsup.javacourse.homework.application.ItemEditService;
 import ua.skillsup.javacourse.homework.domain.item.Item;
+import ua.skillsup.javacourse.homework.domain.tag.Tag;
 import ua.skillsup.javacourse.homework.domain.user.User;
 import ua.skillsup.javacourse.homework.domain.user.UserRepo;
 import ua.skillsup.javacourse.homework.domain.tag.TagRepo;
@@ -36,7 +39,7 @@ public class ItemEditServiceImpl implements ItemEditService {
     return user;
   }
 
-  public Item createItem(String username, String title, String summary/*, Set<String> tags*/) {
+  public Item createItem(String username, String title, String summary, List<String> tags) {
 
     final User user = userRepo.findByName(username);
 
@@ -47,16 +50,16 @@ public class ItemEditServiceImpl implements ItemEditService {
     item.setTags(tagRepo.getAll());//?
     user.addItem(item);
 
-/*    final Set<Tag> itemTags = tags.stream().map(t -> {
+    final List<Tag> itemTags = tags.stream().map(t -> {
       Tag tag = tagRepo.getTag(t);
       if (tag == null) {
         tag = new Tag(t);
         tagRepo.add(tag);
       }
       return tag;
-    }).collect(Collectors.toSet());
+    }).collect(Collectors.toList());
 
-    item.setTags(itemTags);*/
+    item.setTags(itemTags);
 
     return item;
   }

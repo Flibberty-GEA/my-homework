@@ -24,19 +24,20 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-6">
-
                         <label for="itemTitle">Назва</label>
                         <form:input type="text" path="title" class="form-control" id="itemTitle"
                                     placeholder="Write title of item" readonly="${param.readonly}"/>
                     </div>
-                    <div class="col-md-6">
 
-
-                        <label for="itemTitle">Автор</label>
-                        <form:input type="text" path="user.username" class="form-control" id="itemTitle"
-                                    placeholder="Write author name" readonly="${param.readonly}"/>
-                    </div>
-
+                    <c:choose>
+                        <c:when test="${param.readonly}">
+                                <div class="col-md-6">
+                                    <label for="itemTitle">Автор</label>
+                                    <form:input type="text" path="user.username" class="form-control" id="itemTitle"
+                                                placeholder="Write author name" readonly="${param.readonly}"/>
+                                </div>
+                        </c:when>
+                    </c:choose>
                 </div>
             </div>
 

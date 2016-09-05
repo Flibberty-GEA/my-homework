@@ -44,7 +44,7 @@
                     <td>${item.publicationsDate == LocalDate.now() ? 'сьогодні' : item.publicationsDate}</td>
                     <td>
                         <c:forEach var="tag" items="${item.tags}" varStatus="loop">
-                            ${tag.name}<c:if test="${!loop.last}">, </c:if>
+                            <a href="#<%--/items/tag--%>">${tag.name}</a><c:if test="${!loop.last}">, </c:if>
                         </c:forEach>
                     </td>
                 </tr>
@@ -53,12 +53,12 @@
         </table>
     </div>
 
-    <div>
+<%--    <div>
         <a href="/items/create" class="btn btn-danger">Створити нову публікацію</a>
-<%--        <sec:authorize access="hasRole('ADMIN')">
+&lt;%&ndash;        <sec:authorize access="hasRole('ADMIN')">
             <a href="/admin/create" class="btn btn-danger">Створити нову публікацію</a>
-        </sec:authorize>--%>
-    </div>
+        </sec:authorize>&ndash;%&gt;
+    </div>--%>
 
 </div>
 

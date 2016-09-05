@@ -16,8 +16,16 @@
         </li>
     </ul>
 
-    <ul class="nav navbar-nav navbar-right">
 
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <div class="navbar-form navbar-left">
+                <a href="/items/create"  <%--id='wite'--%> class="btn btn-primary">
+                    Створити нову публікацію
+                </a>
+            </div>
+        </li>
 
     <li><form action="/items/search" method="get" class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -27,9 +35,9 @@
     </form></li>
 
 
-    <li><a href="#" style="color: #c7f4cd">Контакти</a></li>
-        <li><a href="#" style="color: #c7f4cd">Вітаємо <sec:authentication property="principal.username" /></a></li>
-        <li style="padding-right: 15px"><a href="<c:url value='/logout' />" style="color: #c7f4cd">Вийти</a></li>
+    <li><a href="#" style="color: #eff4f0">Контакти</a></li>
+        <li><a href="#" style="color: #eff4f0">Вітаємо <sec:authentication property="principal.username" /></a></li>
+        <li style="padding-right: 15px"><a href="<c:url value='/logout' />" style="color: #eff4f0">Вийти</a></li>
     </ul>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

@@ -38,12 +38,12 @@
                                     placeholder="Write title of item" />
                     </div>
 
-<%--                    <div class="col-md-6">
+                    <div class="col-md-6">
                         <label for="itemTitle">#</label>
-                        &lt;%&ndash;<form:hidden path="user.username" />&ndash;%&gt;
+                        <%--<form:hidden path="user.username" />--%>
                         <form:input type="text" path="tags" class="form-control" id="itemTitle"
                                     placeholder="Write any tags" />
-                    </div>--%>
+                    </div>
                 </div>
             </div>
 

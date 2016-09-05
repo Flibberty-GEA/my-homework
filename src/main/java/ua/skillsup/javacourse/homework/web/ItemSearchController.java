@@ -60,9 +60,9 @@ public class ItemSearchController {
   }
 
   @RequestMapping(path = "/create", method = RequestMethod.POST)
-  public String updateItem(@ModelAttribute Item item/*, @RequestParam("tags") List<String> tags*/) throws EntityNotFoundException {
+  public String updateItem(@ModelAttribute Item item, @RequestParam("tags") List<String> tags) throws EntityNotFoundException {
     String name = SecurityContextHolder.getContext().getAuthentication().getName();
-    itemEditService.createItem(name, item.getTitle(), item.getSummary());
+    itemEditService.createItem(name, item.getTitle(), item.getSummary(), tags);
     return "redirect:/items/recommendations";
   }
 
