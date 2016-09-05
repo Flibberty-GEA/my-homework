@@ -4,7 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-    <title>Редагування</title>
+    <title>Опублікувати</title>
     <jsp:include page="../includes.jsp"/>
 </head>
 <body>
@@ -19,7 +19,8 @@
     <ol class="breadcrumb">
         <li><a href="/items/allItems">Усі публікації</a></li>
     </ol>
-
+    <sec:authentication property="principal.username" />
+<%--<p><%= application.getContext(session.getAttribute("user").toString())%></p>--%>
     <div class="row">
         <h2 id="my-css-title">Зміст
             <%--<c:forEach var="tag" items="${item.tags}">${tag.name}</c:forEach>--%></h2>
@@ -32,19 +33,17 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-6">
-
                         <label for="itemTitle">Назва</label>
                         <form:input type="text" path="title" class="form-control" id="itemTitle"
                                     placeholder="Write title of item" />
                     </div>
+
 <%--                    <div class="col-md-6">
-
-
-                        <label for="itemTitle">Автор</label>
-                        <form:input type="text" path="author.name" class="form-control" id="itemTitle"
-                                    placeholder="Write author name" />
+                        <label for="itemTitle">#</label>
+                        &lt;%&ndash;<form:hidden path="user.username" />&ndash;%&gt;
+                        <form:input type="text" path="tags" class="form-control" id="itemTitle"
+                                    placeholder="Write any tags" />
                     </div>--%>
-
                 </div>
             </div>
 

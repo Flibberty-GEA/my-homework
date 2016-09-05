@@ -28,6 +28,7 @@
 
 
     <li><a href="#" style="color: #c7f4cd">Контакти</a></li>
+        <li><a href="#" style="color: #c7f4cd">Вітаємо <sec:authentication property="principal.username" /></a></li>
         <li style="padding-right: 15px"><a href="<c:url value='/logout' />" style="color: #c7f4cd">Вийти</a></li>
     </ul>
     </div><!-- /.navbar-collapse -->
