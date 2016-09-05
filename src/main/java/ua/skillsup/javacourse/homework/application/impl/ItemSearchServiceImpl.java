@@ -56,7 +56,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
   public List<Item> findItemByTitle(String title) {return itemRepo.findItemByTitle(title);}
 
   @Override
-  public List<Item> findItemsForTag(String tag) {return itemRepo.findItemsByTag(tag, 5);}
+  public List<Item> findItemsForTag(String tag) {return itemRepo.findItemsByTag(tag, 10);}
 
 
 }

@@ -43,7 +43,7 @@
                     <td>${item.publicationsDate == LocalDate.now() ? 'сьогодні' : item.publicationsDate}</td>
                     <td>
                         <c:forEach var="tag" items="${item.tags}" varStatus="loop">
-                            ${tag.name}<c:if test="${!loop.last}">, </c:if>
+                            <a href="/items/tag/${tag.name}">${tag.name}</a><c:if test="${!loop.last}">, </c:if>
                         </c:forEach>
                     </td>
                 </tr>
