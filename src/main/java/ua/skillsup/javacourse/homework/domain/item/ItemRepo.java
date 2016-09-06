@@ -8,4 +8,5 @@ public interface ItemRepo extends Repo<Item> {
     List<Item> getAllItems();
     List<Item> findItemByTitle(String title);
     List<Item> findItemsByTag(String tagName, int limit);
+    List<Item> findItemsByUsername(String username, int limit);
 }

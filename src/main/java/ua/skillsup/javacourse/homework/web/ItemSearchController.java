@@ -55,6 +55,13 @@ public class ItemSearchController {
     model.put("items", items);
     return "search";
   }
+  //по юзеру
+  @RequestMapping(path = "/byuser/{name}", method = RequestMethod.GET)
+  public String getItemByUser(@PathVariable("name") String username, Map<String, Object> model) throws EntityNotFoundException {
+    final List<Item> items = itemSearchService.findItemsForUsername(username);
+    model.put("items", items);
+    return "search";
+  }
   //в результате поиска
   @RequestMapping(path = "/search", method = RequestMethod.GET)
   public String getSearchItem(@RequestParam("title") String title, Map<String, Object> model) throws EntityNotFoundException {

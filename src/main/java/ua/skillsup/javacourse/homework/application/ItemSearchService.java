@@ -15,6 +15,8 @@ public interface ItemSearchService {
 
   List<Item> findItemsForTag(String tag);
 
+  List<Item> findItemsForUsername(String username);
+
   Item getItem(Long id) throws EntityNotFoundException; //+
 
   Item updateItemInfo(Item item) throws EntityNotFoundException; //+

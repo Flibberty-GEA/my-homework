@@ -1,6 +1,7 @@
 package ua.skillsup.javacourse.homework.persistence;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public abstract class GenericRepo<T> implements Repo<T> {
     return Util.castList(
         sessionFactory.getCurrentSession()
             .createCriteria(clazz)
+            .setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY)
             .list()
     );
   }

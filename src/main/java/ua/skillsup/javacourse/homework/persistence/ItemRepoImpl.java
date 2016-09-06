@@ -7,6 +7,8 @@ import ua.skillsup.javacourse.homework.domain.item.Item;
 import ua.skillsup.javacourse.homework.domain.item.ItemRepo;
 import ua.skillsup.javacourse.homework.domain.tag.Tag;
 import ua.skillsup.javacourse.homework.domain.tag.TagRepo;
+import ua.skillsup.javacourse.homework.domain.user.User;
+import ua.skillsup.javacourse.homework.domain.user.UserRepo;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -23,6 +25,9 @@ public class ItemRepoImpl extends GenericRepo<Item> implements ItemRepo {
 
   @Inject
   private TagRepo tagRepo;
+
+  @Inject
+  private UserRepo userRepo;
 
   @Override
   public List<Item> getAllItems(){return getAll();}
@@ -49,6 +54,19 @@ public class ItemRepoImpl extends GenericRepo<Item> implements ItemRepo {
                                     "WHERE :t member of i.tags " +
                                     "ORDER BY i.id")
                     .setParameter("t", tag)
+                    .setMaxResults(limit)
+                    .list()
+    );
+  }
+  @Override
+  public List<Item> findItemsByUsername(String username, int limit) {
+    return Util.castList(
+            session.getCurrentSession()
+                    .createQuery(
+                            "FROM Item i " +
+                                    "WHERE :u LIKE i.user.username " +
+                                    "ORDER BY i.id")
+                    .setParameter("u", username)
                     .setMaxResults(limit)
                     .list()
     );

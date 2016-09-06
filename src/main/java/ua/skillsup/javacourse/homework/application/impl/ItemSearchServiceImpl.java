@@ -58,5 +58,8 @@ public class ItemSearchServiceImpl implements ItemSearchService {
   @Override
   public List<Item> findItemsForTag(String tag) {return itemRepo.findItemsByTag(tag, 10);}
 
+  @Override
+  public List<Item> findItemsForUsername(String username){return itemRepo.findItemsByUsername(username, 10);}
+
 
 }

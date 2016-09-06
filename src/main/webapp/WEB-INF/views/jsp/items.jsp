@@ -39,7 +39,7 @@
                     <td>
                         <a href="/items/${item.id}"> ${item.title} </a>
                     </td>
-                    <td>${item.user.username}</td>
+                    <td><a href="/items/byuser/${item.user.username}">${item.user.username}</a></td>
                     <td>${item.summary}</td>
                     <td>${item.publicationsDate == LocalDate.now() ? 'сьогодні' : item.publicationsDate}</td>
                     <td>
