@@ -1,6 +1,7 @@
 package ua.skillsup.javacourse.homework.persistence;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.CriteriaSpecification;
 import org.springframework.stereotype.Repository;
 
 import ua.skillsup.javacourse.homework.domain.item.Item;
@@ -30,7 +31,14 @@ public class ItemRepoImpl extends GenericRepo<Item> implements ItemRepo {
   private UserRepo userRepo;
 
   @Override
-  public List<Item> getAllItems(){return getAll();}
+  public List<Item> getAllItems(){/*return getAll();*/
+
+    return Util.castList(
+            session.getCurrentSession()
+                    .createQuery("FROM Item")
+                    .setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY)
+                    .list());
+  }
 
   @Override
   public List<Item> findItemByTitle (String title) {
@@ -52,7 +60,7 @@ public class ItemRepoImpl extends GenericRepo<Item> implements ItemRepo {
                     .createQuery(
                             "FROM Item i " +
                                     "WHERE :t member of i.tags " +
-                                    "ORDER BY i.id")
+                                    "ORDER BY i.publicationsDate DESC")
                     .setParameter("t", tag)
                     .setMaxResults(limit)
                     .list()
@@ -64,8 +72,8 @@ public class ItemRepoImpl extends GenericRepo<Item> implements ItemRepo {
             session.getCurrentSession()
                     .createQuery(
                             "FROM Item i " +
-                                    "WHERE :u LIKE i.user.username " +
-                                    "ORDER BY i.id")
+                                    "WHERE :u = i.user.username " +
+                                    "ORDER BY i.publicationsDate DESC")
                     .setParameter("u", username)
                     .setMaxResults(limit)
                     .list()

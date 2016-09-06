@@ -32,7 +32,6 @@ public abstract class GenericRepo<T> implements Repo<T> {
     return Util.castList(
         sessionFactory.getCurrentSession()
             .createCriteria(clazz)
-            .setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY)
             .list()
     );
   }
