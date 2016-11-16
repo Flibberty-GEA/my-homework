@@ -52,8 +52,6 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
     initTags();
     initUsers();
     initItems();
-
-
   }
 
   private void initTags() {
@@ -63,12 +61,11 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
   }
 
 
-
   private void initItems() {
     final User user  = userRepo.findByName("admin");
     final Item item1 = new Item();
 
-    item1.setTitle("Title of item1");
+    item1.setTitle("Title of item1 - кириллица");
     item1.setUser(user);
     item1.setSummary("Summary of item1");
     item1.setPublicationsDate(LocalDate.parse("2016-07-29"));

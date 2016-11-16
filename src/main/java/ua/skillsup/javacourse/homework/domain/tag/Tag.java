@@ -20,7 +20,7 @@ public class Tag {
   @GeneratedValue
   private Long id;
 
-  @Column(nullable = false, unique = true)
+  @Column(nullable = false/*, unique = true*/)
   private String name;
 
   public Tag() {

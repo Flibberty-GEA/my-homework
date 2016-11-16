@@ -38,6 +38,9 @@ public class SpringPersistenceConfig {
     hikariConfig.setJdbcUrl("jdbc:h2:mem:homework_db;DB_CLOSE_DELAY=-1");
     hikariConfig.setAutoCommit(env.getProperty("hikari.autoCommit", Boolean.class));
     hikariConfig.setConnectionTimeout(env.getProperty("hikari.connectionTimeout", Long.class));
+
+/*    hikariConfig.addDataSourceProperty("useUnicode", "true");
+    hikariConfig.addDataSourceProperty("characterEncoding", "utf8");*/
     return new HikariDataSource(hikariConfig);
   }
 

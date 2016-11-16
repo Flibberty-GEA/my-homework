@@ -12,6 +12,7 @@ import ua.skillsup.javacourse.homework.domain.user.User;
 import ua.skillsup.javacourse.homework.domain.user.UserRepo;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -53,9 +54,30 @@ public class ItemRepoImpl extends GenericRepo<Item> implements ItemRepo {
 
   @Override
   public List<Item> findItemsByTag(String tagName, int limit) {
-    final Tag tag = tagRepo.getTag(tagName);
+    final List<Tag> tags = tagRepo.getAll();
 
-    return Util.castList(
+    List<Item> result = new ArrayList<>();
+
+    for (Tag tag: tags) {
+      if(tag.getName().toUpperCase().equals(tagName.toUpperCase())){
+        result.addAll(
+                Util.castList(
+                session.getCurrentSession()
+                        .createQuery(
+                                "FROM Item i " +
+                                        "WHERE :t member of i.tags " +
+                                        "ORDER BY i.publicationsDate DESC")
+                        .setParameter("t", tag)
+                    /*.setParameter("n", tag.getName().toUpperCase())*/
+                        .setMaxResults(limit)
+                        .list()));
+      }
+    }
+    return result;
+
+  /*
+  final Tag tag = tagRepo.getTag(tagName);
+  return Util.castList(
             session.getCurrentSession()
                     .createQuery(
                             "FROM Item i " +
@@ -64,7 +86,7 @@ public class ItemRepoImpl extends GenericRepo<Item> implements ItemRepo {
                     .setParameter("t", tag)
                     .setMaxResults(limit)
                     .list()
-    );
+    );*/
   }
   @Override
   public List<Item> findItemsByUsername(String username, int limit) {

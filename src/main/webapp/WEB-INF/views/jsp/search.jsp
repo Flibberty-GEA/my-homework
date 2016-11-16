@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" language="java" %>
 <%@ page import="java.time.LocalDate" %>
 <%@ page import="ua.skillsup.javacourse.homework.domain.item.Item" %>
 <%@ page import="java.util.List" %>
