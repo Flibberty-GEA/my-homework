@@ -9,7 +9,7 @@ public interface ItemEditService {
 
   User createUser(String username, String password);
 
-  Item createItem(String username, String title, String summary, List<String> tags);
+  Item createItem(String username, String title, String summary, String content, List<String> tags);
 
   void quickAddItemAndUser(String title, String username);
 

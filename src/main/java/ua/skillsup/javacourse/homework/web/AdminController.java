@@ -30,7 +30,7 @@ public class AdminController {
     private ItemEditService itemEditService;
 
   @RequestMapping(path = "items/{id}", method = RequestMethod.POST)
-  public String updateBook(@ModelAttribute Item item) throws EntityNotFoundException {
+  public String updateItemAdmin(@ModelAttribute Item item) throws EntityNotFoundException {
     itemSearchService.updateItemInfo(item);
     return "redirect:/items/recommendations";
   }

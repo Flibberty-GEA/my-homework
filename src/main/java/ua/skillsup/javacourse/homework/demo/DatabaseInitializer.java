@@ -68,6 +68,7 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
     item1.setTitle("Title of item1 - кириллица");
     item1.setUser(user);
     item1.setSummary("Summary of item1");
+    item1.setContent("Some content of item1");
     item1.setPublicationsDate(LocalDate.parse("2016-07-29"));
     item1.setTags(
       Stream.of("Java", "OOP")
@@ -80,6 +81,7 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
     item2.setTitle("Title of item2");
     item2.setUser(user);
     item2.setSummary("Summary of item2");
+    item2.setContent("Some content of item2");
     item2.setPublicationsDate(LocalDate.parse("2016-08-08"));
     item2.setTags(
             Stream.of("Java", "Development")
@@ -92,6 +94,7 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
     item3.setTitle("Title of item3");
     item3.setUser(user);
     item3.setSummary("Summary of item3");
+    item3.setContent("Some content of item3");
     item3.setPublicationsDate(LocalDate.now());
     item3.setTags(
             Stream.of("JavaScript")

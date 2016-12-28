@@ -56,6 +56,16 @@
                     </div>
                 </div>
             </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="itemTitle">Зміст</label>
+                        <form:input type="text" path="content" class="form-control" id="itemTitle"
+                                    placeholder="Write some content"/>
+                    </div>
+                </div>
+            </div>
 <%--            <div class="form-group">
                 <div class="row">
                     <div class="col-md-12">

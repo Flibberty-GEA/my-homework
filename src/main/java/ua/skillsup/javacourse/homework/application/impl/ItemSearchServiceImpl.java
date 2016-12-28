@@ -39,6 +39,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
     final Item origItem = getItem(item.getId());
     origItem.setTitle(item.getTitle());
     origItem.setSummary(item.getSummary());
+    origItem.setContent(item.getContent());
 /*    origItem.setPublicationsDate(LocalDate.now());*/
 
     return origItem;

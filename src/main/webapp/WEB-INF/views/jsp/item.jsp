@@ -44,11 +44,18 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-12">
-
-
                         <label for="itemTitle">Короткий зміст</label>
                         <form:input type="text" path="summary" class="form-control" id="itemTitle"
                                     placeholder="Write some summary" readonly="${param.readonly}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="itemTitle">Зміст</label>
+                        <form:input type="text" path="content" class="form-control" id="itemTitle"
+                                    placeholder="Write some content" readonly="${param.readonly}"/>
                     </div>
                 </div>
             </div>

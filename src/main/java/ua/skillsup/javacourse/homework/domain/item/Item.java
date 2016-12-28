@@ -29,6 +29,9 @@ public class Item {
   private String summary;
 
   @Column
+  private String content;
+
+  @Column
   private LocalDate publicationsDate;
 
   @ManyToOne(optional = false)

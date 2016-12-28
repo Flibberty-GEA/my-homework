@@ -39,13 +39,14 @@ public class ItemEditServiceImpl implements ItemEditService {
     return user;
   }
 
-  public Item createItem(String username, String title, String summary, List<String> tags) {
+  public Item createItem(String username, String title, String summary, String content, List<String> tags) {
 
     final User user = userRepo.findByName(username);
 
     final Item item = new Item();
     item.setTitle(title);
     item.setSummary(summary);
+    item.setContent(content);
     item.setPublicationsDate(LocalDate.now()); //?
     item.setTags(tagRepo.getAll());//?
     user.addItem(item);
