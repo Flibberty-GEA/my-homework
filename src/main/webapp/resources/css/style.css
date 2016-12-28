@@ -3,6 +3,15 @@
     font-family: Georgia;
 }
 
+#my-css-news-title{
+    background-color: #1c2b3a;
+    color: #d1e7e7;
+}
+
+#my-css-summary{
+    background-color: #e7e7e7;
+}
+
 #my-css-logo{
     background-color: #1c2b3a;
 }

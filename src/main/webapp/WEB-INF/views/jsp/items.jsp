@@ -22,7 +22,28 @@
     </div>
 
     <div>
-        <table class="table table-striped table-bordered">
+
+        <c:forEach var="item" items="${items}">
+            <div class="panel panel-info">
+                <div class="panel-heading" id="my-css-news-title">
+                    <h3 class="panel-title">${item.title}</h3>
+                </div>
+                <div class="panel-body" id="my-css-summary">
+                        ${item.summary}
+                </div>
+                <div class="panel-footer">
+                    <p>Дата публікації: ${item.publicationsDate == LocalDate.now() ? 'сьогодні' : item.publicationsDate}</p>
+                    <p>Автор: <a href="/items/byuser/${item.user.username}">${item.user.username}</a></p>
+                    <p>#
+                        <c:forEach var="tag" items="${item.tags}" varStatus="loop">
+                            <a href="/items/tag/${tag.name}">${tag.name}</a><c:if test="${!loop.last}">, </c:if>
+                        </c:forEach>
+                    </p>
+                </div>
+            </div>
+        </c:forEach>
+
+     <%--   <table class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>Назва</th>
@@ -50,7 +71,7 @@
                 </tr>
             </c:forEach>
             </tbody>
-        </table>
+        </table>--%>
     </div>
 
 <%--    <div>

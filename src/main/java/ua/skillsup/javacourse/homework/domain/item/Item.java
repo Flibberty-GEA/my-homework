@@ -28,7 +28,7 @@ public class Item {
   @Column(name = "summary")
   private String summary;
 
-  @Column
+  @Column(length = 10000)
   private String content;
 
   @Column
